@@ -1,0 +1,89 @@
+:root {
+  /* Surfaces */
+  --color-bg-page: #F7F7F7;
+  /* --color-bg-page: #f6f7fb; */
+  --color-surface: #ffffff;
+  --color-bg-subtle: #f3f4f6;
+  --color-bg-hover: #f9fafb;
+
+  /* Text */
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-text-secondary-hover: #4b5563;
+  --color-text-body: #374151;
+  --color-text-inverse: #ffffff;
+
+  /* Borders */
+  --color-border: #e5e7eb;
+  --color-border-subtle: #f3f4f6;
+  --color-border-input: #d1d5db;
+
+  /* Brand (green) */
+  --color-brand: #10b981;
+  --color-brand-hover: #059669;
+  --color-brand-active: #047857;
+  --color-brand-bg-soft: #dcfce7;
+
+  /* Info / blue — reconciled to one blue (was split #1e40af / #2563eb) */
+  --color-info: #2563eb;
+  --color-info-bg: #dbeafe;
+
+  /* Danger */
+  --color-danger: #ef4444;
+  --color-danger-hover: #dc2626;
+  --color-danger-bg: #fee2e2;
+  --color-danger-border: #fecaca;
+  --color-danger-text: #991b1b;
+
+  /* Warning / Success (Badge) */
+  --color-warning-bg: #f4cbcb;
+  --color-warning-text: #92400e;
+  --color-success-bg: #dcfce7;
+  --color-success-text: #166534;
+
+  /* Sidebar (dark surface, distinct from the light app surface) */
+  --color-sidebar-bg: #ffffff;
+  --color-sidebar-text: #292929;
+  --color-sidebar-text-hover: #292929;
+  --color-sidebar-hover-bg: #c7c5c5;
+  --color-sidebar-active-bg: #3f3f46;
+  --color-sidebar-active-text: var(--color-text-inverse);
+  --color-sidebar-section-label: #8a8a92;
+
+  /* Categorical accents — reused from the existing validated dashboard stat-tile palette */
+  --color-accent-workers: #2a78d6;
+  --color-accent-workers-bg: #d9e7f8;
+  --color-accent-participants: #eb6834;
+  --color-accent-participants-bg: #fbe4da;
+  --color-accent-shifts-border: #1baf7a;
+  --color-accent-shifts-number: #199e70;
+  --color-accent-shifts-bg: #d6f1e7;
+  --color-accent-assignments-border: #eda100;
+  --color-accent-assignments-number: #c98500;
+  --color-accent-assignments-bg: #fceed1;
+  --color-accent-myassignments: #4a3aa7;
+  --color-accent-myassignments-bg: #dedcef;
+
+  /* Spacing (8px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  /* Radius scale */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  /* Shadows — slate-tinted */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-card: 0 4px 12px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 12px 24px -6px rgba(15, 23, 42, 0.12), 0 4px 8px rgba(15, 23, 42, 0.06);
+  --shadow-modal: 0 20px 25px -5px rgba(15, 23, 42, 0.15), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+  --shadow-sidebar: 4px 0 16px rgba(15, 23, 42, 0.08);
+}

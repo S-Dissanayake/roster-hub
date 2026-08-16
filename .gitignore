@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build outputs
+dist/
+build/
+.svelte-kit/
+
+# environment variables & secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# logs & IDE
+*.log
+npm-debug.log*
+.vscode/
+.idea/
+.DS_Store
+

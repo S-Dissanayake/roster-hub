@@ -1,0 +1,83 @@
+{
+  "realm": "rosterflow",
+  "enabled": true,
+  "roles": {
+    "realm": [
+      { "name": "admin", "description": "Administrator" },
+      { "name": "coordinator", "description": "Roster Coordinator" },
+      { "name": "worker", "description": "Support Worker" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "rosterflow-backend",
+      "enabled": true,
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "implicitFlowEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": ["http://localhost:5173/*", "http://localhost:3000/*"],
+      "webOrigins": ["http://localhost:5173", "http://localhost:3000", "+"],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:5173/*"
+      }
+    },
+    {
+      "clientId": "rosterflow-backend-admin",
+      "enabled": true,
+      "publicClient": false,
+      "protocol": "openid-connect",
+      "clientAuthenticatorType": "client-secret",
+      "secret": "g1X7PS_dXVy9NKyHIxP0eUTtdvgVlm0JpvDRN5bgx4U",
+      "serviceAccountsEnabled": true,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "implicitFlowEnabled": false
+    }
+  ],
+  "users": [
+    {
+      "username": "service-account-rosterflow-backend-admin",
+      "enabled": true,
+      "serviceAccountClientId": "rosterflow-backend-admin",
+      "clientRoles": {
+        "realm-management": ["manage-users", "view-realm"]
+      }
+    },
+    {
+      "id": "kc-admin-001",
+      "username": "admin",
+      "email": "admin@rosterflow.com",
+      "firstName": "Admin",
+      "lastName": "User",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "Admin123!", "temporary": false }],
+      "realmRoles": ["admin", "offline_access", "uma_authorization"]
+    },
+    {
+      "id": "kc-coord-001",
+      "username": "coordinator",
+      "email": "coordinator@rosterflow.com",
+      "firstName": "Coordinator",
+      "lastName": "User",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "Coord123!", "temporary": false }],
+      "realmRoles": ["coordinator", "offline_access", "uma_authorization"]
+    },
+    {
+      "id": "kc-worker-001",
+      "username": "worker1",
+      "email": "worker1@rosterflow.com",
+      "firstName": "Jane",
+      "lastName": "Worker",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "Worker123!", "temporary": false }],
+      "realmRoles": ["worker", "offline_access", "uma_authorization"]
+    }
+  ]
+}

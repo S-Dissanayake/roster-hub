@@ -113,7 +113,7 @@
     {#if isLoading}
       <Loading message="Loading dashboard..." />
     {:else}
-      <div class="dashboard-grid">
+      <div class="dashboard-grid" class:single-card={user && user.role === 'worker'}>
         {#if user && ['admin', 'coordinator'].includes(user.role)}
           {@render statCard('Workers', 'Active workers', workers.length, workersIcon, workersIcon, 'Manage Workers', STAT_COLORS.workers, '/dashboard/workers')}
           {@render statCard('Participants', 'Active participants', participants.length, participantsIcon, participantsIcon, 'Manage Participants', STAT_COLORS.participants, '/dashboard/participants')}
@@ -163,6 +163,10 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     align-items: stretch;
+  }
+
+  .dashboard-grid.single-card {
+    grid-template-columns: minmax(250px, 340px);
   }
 
   .stat-card {

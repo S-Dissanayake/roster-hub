@@ -39,7 +39,15 @@ This starts:
 
 ### 3. Configure Keycloak
 
-Follow [docs/keycloak.md](docs/keycloak.md) to verify the realm/client/roles were imported correctly and to create test users (`admin`, `coordinator`, `worker1`) with passwords. The Keycloak admin console is at `http://localhost:8080/admin` (default credentials: `admin` / `admin_password`, see `infrastructure/docker-compose.yml`).
+The `rosterflow` realm import (`infrastructure/keycloak/rosterflow-realm.json`) already includes the client, roles, and the test users below with passwords set — no manual setup needed for local dev. See [docs/keycloak.md](docs/keycloak.md) for details, or to administer the realm yourself via the Keycloak admin console at `http://localhost:8080/admin` (default credentials: `admin` / `admin_password`, see `infrastructure/docker-compose.yml`).
+
+**Test user logins:**
+
+| Role | Email | Password |
+| --- | --- | --- |
+| Admin | `admin@rosterflow.com` | `Admin123!` |
+| Coordinator | `coordinator@rosterflow.com` | `Coord123!` |
+| Worker | `worker1@rosterflow.com` | `Worker123!` |
 
 ### 4. Backend setup
 
@@ -84,6 +92,6 @@ With infrastructure containers running (step 2 above):
    ```
    App available at `http://localhost:5173`.
 
-3. Open `http://localhost:5173` and log in via Keycloak using one of the test users created in step 3 (e.g. `admin@rosterflow.com`).
+3. Open `http://localhost:5173` and log in via Keycloak using one of the test users from step 3 above (e.g. `admin@rosterflow.com` / `Admin123!`).
 
 

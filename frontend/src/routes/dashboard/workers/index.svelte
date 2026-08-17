@@ -301,7 +301,6 @@
               <option value="inactive">Inactive</option>
             </select>
           </div>
-          <Button variant="primary" size="sm" onclick={saveWorkerEdits}>Save Changes</Button>
         </div>
 
         <div class="detail-section">
@@ -357,6 +356,10 @@
               {isSubmittingAvail ? 'Adding…' : 'Add'}
             </Button>
           </form>
+        </div>
+
+        <div class="modal-actions">
+          <Button variant="primary" onclick={saveWorkerEdits}>Save Changes</Button>
         </div>
       {/if}
     </Modal>

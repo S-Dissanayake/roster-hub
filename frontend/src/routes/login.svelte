@@ -32,7 +32,7 @@
   <div class="login-container">
     <div class="login-box">
       <div class="login-header">
-        <h1>🏥 RosterFlow</h1>
+        <h1>🏥 Roster Flow</h1>
         <p>Care-Sector Rostering System</p>
       </div>
 

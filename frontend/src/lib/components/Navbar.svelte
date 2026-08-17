@@ -53,7 +53,7 @@
 
 <style>
   .navbar {
-    background: linear-gradient(to bottom, var(--color-sidebar-bg),#ffffff);
+    background: #ffffff;
     padding: 0.75rem 1.5rem;
     position: sticky;
     top: 0;

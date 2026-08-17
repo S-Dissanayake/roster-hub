@@ -1,6 +1,6 @@
 :root {
   /* Surfaces */
-  --color-bg-page: #F7F7F7;
+  --color-bg-page: #f9fff5;
   --color-surface: #ffffff;
   --color-bg-subtle: #f3f4f6;
   --color-bg-hover: #f9fafb;
@@ -41,13 +41,14 @@
   --color-success-text: #166534;
 
   /* Sidebar */
-  --color-sidebar-bg: #F8FAFC;
-  --color-sidebar-text: #292929;
+  --color-sidebar-bg: #034d38;
+  --color-sidebar-bg-dark: #082e23;
+  --color-sidebar-text: #fafafa;
   --color-sidebar-text-hover: #292929;
-  --color-sidebar-hover-bg: #c7c5c5;
-  --color-sidebar-active-bg: #3f3f46;
-  --color-sidebar-active-text: var(--color-text-inverse);
-  --color-sidebar-section-label: #8a8a92;
+  --color-sidebar-hover-bg: #f0ebeba1;
+  --color-sidebar-active-bg: #efeff3;
+  --color-sidebar-active-text: #292929;
+  --color-sidebar-section-label: #ffffff;
 
   /* Categorical accents — reused from the existing validated dashboard stat-tile palette */
   --color-accent-workers: #2a78d6;

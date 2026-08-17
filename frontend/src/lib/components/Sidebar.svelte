@@ -5,10 +5,6 @@
 
   let currentPath = $state('');
 
-  // Dashboard's own path ('/dashboard') is a prefix of every other route here
-  // (e.g. '/dashboard/participants'), so it needs an exact match — the rest can
-  // stay prefix-matched since that's what correctly highlights their sub-routes
-  // (e.g. '/dashboard/shifts/:id' highlighting the Shifts link).
   function isActive(path: string): boolean {
     if (path === '/dashboard') {
       return currentPath === '/dashboard';
@@ -118,10 +114,11 @@
 <style>
   .sidebar {
     width: 250px;
-    background: var(--color-sidebar-bg);
+    background: linear-gradient(to bottom, var(--color-sidebar-bg) 40%, var(--color-sidebar-bg-dark) 100%);
     height: 100%;
     overflow-y: auto;
     display: flex;
+    z-index: 110;
     flex-direction: column;
     border-right: 2px solid var(--color-border);
   }
@@ -156,7 +153,7 @@
 
   .sidebar-nav a:hover {
     background: var(--color-sidebar-hover-bg);
-    color: var(--color-sidebar-text-hover);
+    color: var(--color-sidebar-text-hover);    
   }
 
   .sidebar-nav a.active {

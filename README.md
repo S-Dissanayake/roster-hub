@@ -94,6 +94,14 @@ With infrastructure containers running (step 2 above):
 
 3. Open `http://localhost:5173` and log in via Keycloak using one of the test users from step 3 above (e.g. `admin@rosterflow.com` / `Admin123!`).
 
+
+## Demo Video
+
+https://github.com/user-attachments/assets/816e4c99-6270-4a49-b8d6-aa47f9168b7d
+
+
+
+
 ## UI samples
 
 <img width="1912" height="906" alt="Loging page" src="https://github.com/user-attachments/assets/5940c822-9f46-4ab4-8efb-dff967da86e6" />

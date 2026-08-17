@@ -31,9 +31,6 @@ export class ShiftRequirement {
   @JoinColumn({ name: 'skillId' })
   skill: Skill;
 
-  @Column({ type: 'int', default: 1 })
-  requiredCount: number;
-
   @CreateDateColumn()
   createdAt: Date;
 

@@ -1,7 +1,5 @@
 <script lang="ts">
   import AppLayout from '../../lib/components/AppLayout.svelte';
-  import Card from '../../lib/components/Card.svelte';
-  import Button from '../../lib/components/Button.svelte';
   import Loading from '../../lib/components/Loading.svelte';
   import { data } from '../../lib/stores/data';
   import { auth } from '../../lib/stores/auth';
@@ -78,6 +76,33 @@
   </svg>
 {/snippet}
 
+{#snippet arrowIcon()}
+  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="4" y1="10" x2="16" y2="10" />
+    <polyline points="11 5 16 10 11 15" />
+  </svg>
+{/snippet}
+
+{#snippet statCard(label: string, description: string, count: number, icon: any, actionIcon: any, actionLabel: string, colors: { accent: string; bg: string }, href: string)}
+  <div class="stat-card">
+    <div class="stat-icon" style="background: {colors.bg}; color: {colors.accent}">
+      {@render icon()}
+    </div>
+    <div class="stat-label">{label}</div>
+    <div class="stat-number" style="color: {colors.accent}">{count}</div>
+    <p class="stat-desc">{description}</p>
+    <button
+      class="stat-action"
+      style="background: {colors.bg}; color: {colors.accent}"
+      onclick={() => window.location.href = href}
+    >
+      {@render actionIcon()}
+      <span>{actionLabel}</span>
+      {@render arrowIcon()}
+    </button>
+  </div>
+{/snippet}
+
 <AppLayout>
   <div class="dashboard">
     <div class="dashboard-header">
@@ -90,44 +115,12 @@
     {:else}
       <div class="dashboard-grid">
         {#if user && ['admin', 'coordinator'].includes(user.role)}
-          <Card title="Workers" subtitle="Active workers" icon={workersIcon} iconColor={STAT_COLORS.workers.accent} iconBg={STAT_COLORS.workers.bg} interactive>
-            <div class="stat-large" style="color: {STAT_COLORS.workers.accent}">{workers.length}</div>
-            <Button variant="primary" size="sm" onclick={() => window.location.href = '/dashboard/workers'}>
-              Manage Workers
-            </Button>
-          </Card>
-
-          <Card title="Participants" subtitle="Active participants" icon={participantsIcon} iconColor={STAT_COLORS.participants.accent} iconBg={STAT_COLORS.participants.bg} interactive>
-            <div class="stat-large" style="color: {STAT_COLORS.participants.accent}">{participants.length}</div>
-            <Button variant="primary" size="sm" onclick={() => window.location.href = '/dashboard/participants'}>
-              Manage Participants
-            </Button>
-          </Card>
-
-          <Card title="Shifts" subtitle="Total shifts" icon={shiftsIcon} iconColor={STAT_COLORS.shifts.accent} iconBg={STAT_COLORS.shifts.bg} interactive>
-            <div class="stat-large" style="color: {STAT_COLORS.shifts.accent}">{shifts.length}</div>
-            <Button variant="primary" size="sm" onclick={() => window.location.href = '/dashboard/shifts'}>
-              Manage Shifts
-            </Button>
-          </Card>
-
-          <Card title="Assignments" subtitle="Pending/assigned" icon={assignmentsIcon} iconColor={STAT_COLORS.assignments.accent} iconBg={STAT_COLORS.assignments.bg} interactive>
-            <div class="stat-large" style="color: {STAT_COLORS.assignments.accent}">{assignments.filter(a => ['pending', 'accepted'].includes(a.status)).length}</div>
-            <Button variant="primary" size="sm" onclick={() => window.location.href = '/dashboard/assignments'}>
-              View Assignments
-            </Button>
-          </Card>
+          {@render statCard('Workers', 'Active workers', workers.length, workersIcon, workersIcon, 'Manage Workers', STAT_COLORS.workers, '/dashboard/workers')}
+          {@render statCard('Participants', 'Active participants', participants.length, participantsIcon, participantsIcon, 'Manage Participants', STAT_COLORS.participants, '/dashboard/participants')}
+          {@render statCard('Shifts', 'Total shifts', shifts.length, shiftsIcon, shiftsIcon, 'Manage Shifts', STAT_COLORS.shifts, '/dashboard/shifts')}
+          {@render statCard('Assignments', 'Pending/assigned', assignments.filter(a => ['pending', 'accepted'].includes(a.status)).length, assignmentsIcon, assignmentsIcon, 'View Assignments', STAT_COLORS.assignments, '/dashboard/assignments')}
         {:else if user && user.role === 'worker'}
-          <Card title="My Assignments" subtitle="Active assignments" icon={assignmentsIcon} iconColor={STAT_COLORS.myAssignments.accent} iconBg={STAT_COLORS.myAssignments.bg} interactive>
-            <div class="stat-large" style="color: {STAT_COLORS.myAssignments.accent}">{myAssignments.length}</div>
-            <p class="stat-sub">
-              {myAssignments.filter(a => a.status === 'pending').length} pending,
-              {myAssignments.filter(a => a.status === 'accepted').length} accepted
-            </p>
-            <Button variant="primary" size="sm" onclick={() => window.location.href = '/dashboard/assignments/me'}>
-              View My Assignments
-            </Button>
-          </Card>
+          {@render statCard('My Assignments', `${myAssignments.filter(a => a.status === 'pending').length} pending, ${myAssignments.filter(a => a.status === 'accepted').length} accepted`, myAssignments.length, assignmentsIcon, assignmentsIcon, 'View My Assignments', STAT_COLORS.myAssignments, '/dashboard/assignments/me')}
         {/if}
       </div>
     {/if}
@@ -169,17 +162,87 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
+    align-items: stretch;
   }
 
-  .stat-large {
-    font-size: 2.5rem;
+  .stat-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1.75rem 1.5rem 1.5rem;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .stat-icon :global(svg) {
+    width: 26px;
+    height: 26px;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
     font-weight: 700;
-    margin: 1rem 0;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
   }
 
-  .stat-sub {
+  .stat-number {
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-desc {
     font-size: 0.9rem;
     color: var(--color-text-secondary);
-    margin-top: 0.5rem;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .stat-action {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: filter 0.15s ease;
+  }
+
+  .stat-action:hover {
+    filter: brightness(0.95);
+  }
+
+  .stat-action :global(svg) {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
   }
 </style>

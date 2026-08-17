@@ -1,7 +1,6 @@
 :root {
   /* Surfaces */
   --color-bg-page: #F7F7F7;
-  /* --color-bg-page: #f6f7fb; */
   --color-surface: #ffffff;
   --color-bg-subtle: #f3f4f6;
   --color-bg-hover: #f9fafb;
@@ -24,7 +23,7 @@
   --color-brand-active: #047857;
   --color-brand-bg-soft: #dcfce7;
 
-  /* Info / blue — reconciled to one blue (was split #1e40af / #2563eb) */
+  /* Info */
   --color-info: #2563eb;
   --color-info-bg: #dbeafe;
 
@@ -41,8 +40,8 @@
   --color-success-bg: #dcfce7;
   --color-success-text: #166534;
 
-  /* Sidebar (dark surface, distinct from the light app surface) */
-  --color-sidebar-bg: #ffffff;
+  /* Sidebar */
+  --color-sidebar-bg: #F8FAFC;
   --color-sidebar-text: #292929;
   --color-sidebar-text-hover: #292929;
   --color-sidebar-hover-bg: #c7c5c5;

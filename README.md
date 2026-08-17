@@ -1,12 +1,89 @@
-# roster-hub
+# RosterFlow
 
-## Project structure
+Care-sector rostering system for managing workers, participants, shifts, and skill-based shift assignments.
 
-```text
-roster-hub/
-├── frontend/         # for Svelte 5
-├── backend/          # for NestJS
-├── infrastructure/   # for Docker / AWS
-├── docs/
-└── README.md
+## Tech Stack
+
+- **Backend:** NestJS (TypeScript), TypeORM, PostgreSQL
+- **Frontend:** Svelte 5, Vite
+- **Auth:** Keycloak 
+- **API docs:** Swagger / OpenAPI (via `@nestjs/swagger`)
+- **Infrastructure:** Docker Compose (PostgreSQL + Keycloak)
+- **Testing:** Jest, svelte-check
+- **CI:** GitHub Actions
+
+## Prerequisites
+
+- Node.js 20+ and npm
+- Docker and Docker Compose
+
+## Project Setup
+
+### 1. Clone the repository
+
+```bash
+git clone <repo-url>
+cd roster-hub
 ```
+
+### 2. Start infrastructure (PostgreSQL + Keycloak)
+
+```bash
+cd infrastructure
+docker compose up -d
+```
+
+This starts:
+- PostgreSQL on `localhost:5432`
+- Keycloak on `localhost:8080`, auto-importing the `rosterflow` realm from `infrastructure/keycloak/rosterflow-realm.json`
+
+### 3. Configure Keycloak
+
+Follow [docs/keycloak.md](docs/keycloak.md) to verify the realm/client/roles were imported correctly and to create test users (`admin`, `coordinator`, `worker1`) with passwords. The Keycloak admin console is at `http://localhost:8080/admin` (default credentials: `admin` / `admin_password`, see `infrastructure/docker-compose.yml`).
+
+### 4. Backend setup
+
+```bash
+cd backend
+npm install
+cp .env.example .env
+```
+
+Review `.env` — the defaults match the Docker Compose services, but confirm `DB_*` and `KEYCLOAK_*` values, and set `KEYCLOAK_ADMIN_CLIENT_SECRET` (used server-side to call the Keycloak Admin API for user provisioning).
+
+Run database migrations, then optionally seed demo data:
+
+```bash
+npm run migration:run
+npm run seed   # optional — seeds demo users, workers, participants, skills and shifts
+```
+
+### 5. Frontend setup
+
+```bash
+cd frontend
+npm install
+cp .env.example .env
+```
+
+The default `.env` values point at the backend (`http://localhost:3000/api`) and Keycloak (`http://localhost:8080`) — adjust if you changed ports.
+
+## Running the Application
+
+With infrastructure containers running (step 2 above):
+
+1. **Backend** — from `backend/`:
+   ```bash
+   npm run start:dev
+   ```
+   API available at `http://localhost:3000/api`, Swagger docs at `http://localhost:3000/api/docs`.
+
+2. **Frontend** — from `frontend/`:
+   ```bash
+   npm run dev
+   ```
+   App available at `http://localhost:5173`.
+
+3. Open `http://localhost:5173` and log in via Keycloak using one of the test users created in step 3 (e.g. `admin@rosterflow.com`).
+
+

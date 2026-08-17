@@ -2,7 +2,7 @@ import type {
   Worker, CreateWorkerDto, UpdateWorkerDto,
   Participant, CreateParticipantDto, UpdateParticipantDto,
   Shift, CreateShiftDto, UpdateShiftDto, FilterShiftDto,
-  ShiftRequirement, CreateShiftRequirementDto, UpdateShiftRequirementDto,
+  ShiftRequirement, CreateShiftRequirementDto,
   ShiftAssignment, CreateAssignmentDto,
   ShiftEligibilityReport, EligibilityReason, EligibilityDetails,
   Skill,
@@ -341,17 +341,6 @@ export async function addShiftRequirement(
 ): Promise<ShiftRequirement> {
   return fetchApi<ShiftRequirement>(`/shifts/${shiftId}/requirements`, {
     method: 'POST',
-    body: data,
-  });
-}
-
-export async function updateShiftRequirement(
-  shiftId: string,
-  reqId: string,
-  data: UpdateShiftRequirementDto,
-): Promise<ShiftRequirement> {
-  return fetchApi<ShiftRequirement>(`/shifts/${shiftId}/requirements/${reqId}`, {
-    method: 'PATCH',
     body: data,
   });
 }

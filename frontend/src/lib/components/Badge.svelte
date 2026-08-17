@@ -21,6 +21,7 @@
     border-radius: var(--radius-full);
     font-size: 0.8rem;
     font-weight: 600;
+    text-transform: capitalize;
   }
 
   .badge-primary {

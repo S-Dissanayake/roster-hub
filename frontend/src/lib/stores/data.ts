@@ -3,7 +3,7 @@ import type {
   Worker, CreateWorkerDto, UpdateWorkerDto,
   Participant, CreateParticipantDto, UpdateParticipantDto,
   Shift, CreateShiftDto, UpdateShiftDto, FilterShiftDto,
-  CreateShiftRequirementDto, UpdateShiftRequirementDto,
+  CreateShiftRequirementDto,
   ShiftAssignment, CreateAssignmentDto,
   Skill,
   User, CreateUserDto,
@@ -13,7 +13,7 @@ import {
   getWorkers, getWorker, createWorker, updateWorker,
   getParticipants, getParticipant, createParticipant, updateParticipant,
   getShifts, getShift, createShift, updateShift,
-  addShiftRequirement, updateShiftRequirement, deleteShiftRequirement,
+  addShiftRequirement, deleteShiftRequirement,
   getMyAssignments, getShiftAssignments, createAssignment, respondToAssignment,
   getSkills,
 } from '../api/client';
@@ -232,10 +232,6 @@ function createDataStore() {
     // Shift requirements
     addShiftRequirement: async (shiftId: string, data: CreateShiftRequirementDto) => {
       return addShiftRequirement(shiftId, data);
-    },
-
-    updateShiftRequirement: async (shiftId: string, reqId: string, data: UpdateShiftRequirementDto) => {
-      return updateShiftRequirement(shiftId, reqId, data);
     },
 
     removeShiftRequirement: async (shiftId: string, reqId: string) => {

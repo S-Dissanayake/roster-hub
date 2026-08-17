@@ -6,11 +6,12 @@
     size?: 'sm' | 'md' | 'lg';
     disabled?: boolean;
     fullWidth?: boolean;
+    icon?: Snippet;
     onclick?: () => void;
     children: Snippet;
   }
 
-  let { variant = 'primary', size = 'md', disabled = false, fullWidth = false, onclick, children }: Props = $props();
+  let { variant = 'primary', size = 'md', disabled = false, fullWidth = false, icon, onclick, children }: Props = $props();
 </script>
 
 <button
@@ -19,17 +20,34 @@
   {disabled}
   {onclick}
 >
+  {#if icon}
+    <span class="btn-icon">{@render icon()}</span>
+  {/if}
   {@render children?.()}
 </button>
 
 <style>
   .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
     font-weight: 600;
     border: none;
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 0.95rem;
+  }
+
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .btn-icon :global(svg) {
+    width: 1em;
+    height: 1em;
   }
 
   .btn:disabled {

@@ -190,14 +190,21 @@
   ];
 </script>
 
+{#snippet plusIcon()}
+  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="10" y1="4" x2="10" y2="16" />
+    <line x1="4" y1="10" x2="16" y2="10" />
+  </svg>
+{/snippet}
+
 <AppLayout>
   <div class="page">
     <div class="page-header">
       <div>
         <h1>Workers</h1>
-        <p>Manage workers and their assignments</p>
+        <p>Manage workers</p>
       </div>
-      <Button variant="primary" onclick={openAddWorkerModal}>
+      <Button variant="primary" icon={plusIcon} onclick={openAddWorkerModal}>
         Add Worker
       </Button>
     </div>
@@ -213,7 +220,7 @@
         title="No workers found"
         message="Start by adding your first worker to the system."
       >
-        <Button variant="primary" onclick={openAddWorkerModal}>
+        <Button variant="primary" icon={plusIcon} onclick={openAddWorkerModal}>
           Add Worker
         </Button>
       </EmptyState>

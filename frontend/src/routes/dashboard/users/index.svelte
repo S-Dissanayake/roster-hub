@@ -74,6 +74,13 @@
   };
 </script>
 
+{#snippet plusIcon()}
+  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="10" y1="4" x2="10" y2="16" />
+    <line x1="4" y1="10" x2="16" y2="10" />
+  </svg>
+{/snippet}
+
 <AppLayout>
   <div class="page">
     <div class="page-header">
@@ -81,7 +88,7 @@
         <h1>Users</h1>
         <p>Provision Keycloak accounts and manage system users</p>
       </div>
-      <Button variant="primary" onclick={() => (showModal = true)}>
+      <Button variant="primary" icon={plusIcon} onclick={() => (showModal = true)}>
         Add User
       </Button>
     </div>
@@ -97,7 +104,7 @@
         title="No users found"
         message="Start by adding your first user to the system."
       >
-        <Button variant="primary" onclick={() => (showModal = true)}>
+        <Button variant="primary" icon={plusIcon} onclick={() => (showModal = true)}>
           Add User
         </Button>
       </EmptyState>

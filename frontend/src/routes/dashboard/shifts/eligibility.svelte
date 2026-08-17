@@ -47,6 +47,7 @@
   <div class="page">
     <div class="page-header">
       <div>
+        <a href={`/dashboard/shifts/${shiftId}`} class="back-link">&larr; Back to Shift</a>
         <h1>Shift Eligibility</h1>
         <p>Review worker eligibility for this shift</p>
       </div>
@@ -130,6 +131,21 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 2rem;
+  }
+
+  .back-link {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    display: inline-block;
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+      border: 2px solid #dbdde0;
+    &:hover { 
+      background-color: #f3f4f6; 
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); 
+    }
   }
 
   .page-header h1 {

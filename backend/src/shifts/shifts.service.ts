@@ -16,7 +16,6 @@ import { Worker } from '../entities/worker.entity';
 import { CreateShiftDto } from './dto/create-shift.dto';
 import { UpdateShiftDto } from './dto/update-shift.dto';
 import { CreateShiftRequirementDto } from './dto/create-shift-requirement.dto';
-import { UpdateShiftRequirementDto } from './dto/update-shift-requirement.dto';
 import { CreateAssignmentDto } from './dto/create-assignment.dto';
 import { RespondAssignmentDto } from './dto/respond-assignment.dto';
 import { FilterShiftDto } from './dto/filter-shift.dto';
@@ -181,7 +180,6 @@ export class ShiftsService {
     const req = this.requirementRepository.create({
       shiftId,
       skillId: dto.skillId,
-      requiredCount: dto.requiredCount,
     });
 
     let saved: ShiftRequirement;
@@ -200,16 +198,6 @@ export class ShiftsService {
     // the frontend can render the name immediately instead of falling back to the raw skillId.
     saved.skill = skill;
     return saved;
-  }
-
-  async updateRequirement(shiftId: string, reqId: string, dto: UpdateShiftRequirementDto): Promise<ShiftRequirement> {
-    const req = await this.requirementRepository.findOne({ where: { id: reqId, shiftId } });
-    if (!req) {
-      throw new NotFoundException(`Shift requirement '${reqId}' not found on shift '${shiftId}'`);
-    }
-
-    req.requiredCount = dto.requiredCount;
-    return this.requirementRepository.save(req);
   }
 
   async removeRequirement(shiftId: string, reqId: string): Promise<void> {

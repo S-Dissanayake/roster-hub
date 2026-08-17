@@ -176,7 +176,6 @@ export interface ShiftRequirement {
   shiftId: string;
   skillId: string;
   skill?: Skill;
-  requiredCount: number; // Number of workers with this skill needed
   createdAt: string;
   updatedAt: string;
 }
@@ -201,12 +200,6 @@ export interface UpdateShiftDto {
 
 export interface CreateShiftRequirementDto {
   skillId: string;
-  requiredCount: number;
-}
-
-export interface UpdateShiftRequirementDto {
-  // Backend DTO only allows changing the count — the skill on an existing requirement is immutable.
-  requiredCount: number;
 }
 
 export interface FilterShiftDto {

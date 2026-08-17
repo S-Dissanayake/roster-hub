@@ -96,7 +96,6 @@
 
   // --- Requirements ---
   let newReqSkillId = $state('');
-  let newReqCount = $state(1);
   let reqError = $state('');
   let isSubmittingReq = $state(false);
 
@@ -109,10 +108,9 @@
     }
     isSubmittingReq = true;
     try {
-      const req = await data.addShiftRequirement(id, { skillId: newReqSkillId, requiredCount: newReqCount });
+      const req = await data.addShiftRequirement(id, { skillId: newReqSkillId });
       if (shift) shift = { ...shift, requirements: [...(shift.requirements || []), req] };
       newReqSkillId = '';
-      newReqCount = 1;
     } catch (err: any) {
       reqError = err.message;
     } finally {
@@ -252,7 +250,7 @@
             <ul class="req-list">
               {#each shift.requirements || [] as req}
                 <li>
-                  <span>{req.skill?.name || req.skillId} &times; {req.requiredCount}</span>
+                  <span>{req.skill?.name || req.skillId}</span>
                   <button type="button" class="link-danger" onclick={() => removeRequirement(req.id)}>Remove</button>
                 </li>
               {/each}
@@ -265,7 +263,6 @@
                 <option value={skill.id}>{skill.name}</option>
               {/each}
             </select>
-            <input type="number" min="1" bind:value={newReqCount} />
             <Button variant="secondary" size="sm" onclick={addRequirement} disabled={isSubmittingReq}>
               {isSubmittingReq ? 'Adding…' : 'Add'}
             </Button>
@@ -331,11 +328,18 @@
   }
 
   .back-link {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
     display: inline-block;
     color: #6b7280;
     text-decoration: none;
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
+    border: 2px solid #dbdde0;
+    &:hover { 
+      background-color: #f3f4f6; 
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); 
+    }
   }
 
   .page-header h1 { margin: 0; color: #1f2937; font-size: 2rem; }
@@ -361,7 +365,7 @@
     display: block;
   }
 
-  select, input[type="number"] {
+  select {
     width: 100%;
     padding: 0.6rem 0.9rem;
     border: 1px solid #d1d5db;
@@ -398,7 +402,6 @@
   }
 
   .inline-form select { flex: 1; }
-  .inline-form input[type="number"] { width: 70px; }
 
   .conflict-box { margin-bottom: 1rem; }
   .reasons { margin: 0.5rem 0; padding-left: 1.25rem; color: #92400e; }

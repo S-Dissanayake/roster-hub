@@ -143,11 +143,11 @@ describe('Phase 4A & 4B Services & Authorization Specs', () => {
       mockShiftRepo.findOne.mockResolvedValue({ id: 'shift-1' });
       mockSkillRepo.findOne.mockResolvedValue({ id: 'skill-1', name: 'Nursing' });
       mockRequirementRepo.findOne.mockResolvedValue(null);
-      mockRequirementRepo.create.mockReturnValue({ shiftId: 'shift-1', skillId: 'skill-1', requiredCount: 2 });
-      mockRequirementRepo.save.mockResolvedValue({ id: 'req-1', shiftId: 'shift-1', skillId: 'skill-1', requiredCount: 2 });
+      mockRequirementRepo.create.mockReturnValue({ shiftId: 'shift-1', skillId: 'skill-1' });
+      mockRequirementRepo.save.mockResolvedValue({ id: 'req-1', shiftId: 'shift-1', skillId: 'skill-1' });
 
-      const result = await shiftsService.addRequirement('shift-1', { skillId: 'skill-1', requiredCount: 2 });
-      expect(result.requiredCount).toBe(2);
+      const result = await shiftsService.addRequirement('shift-1', { skillId: 'skill-1' });
+      expect(result.id).toBe('req-1');
     });
 
     it('should create an assignment and throw ConflictException if duplicate', async () => {

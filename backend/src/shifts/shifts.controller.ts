@@ -4,7 +4,6 @@ import { ShiftsService } from './shifts.service';
 import { CreateShiftDto } from './dto/create-shift.dto';
 import { UpdateShiftDto } from './dto/update-shift.dto';
 import { CreateShiftRequirementDto } from './dto/create-shift-requirement.dto';
-import { UpdateShiftRequirementDto } from './dto/update-shift-requirement.dto';
 import { CreateAssignmentDto } from './dto/create-assignment.dto';
 import { RespondAssignmentDto } from './dto/respond-assignment.dto';
 import { FilterShiftDto } from './dto/filter-shift.dto';
@@ -64,17 +63,6 @@ export class ShiftsController {
     @Body() dto: CreateShiftRequirementDto,
   ) {
     return this.shiftsService.addRequirement(shiftId, dto);
-  }
-
-  @Patch('shifts/:shiftId/requirements/:reqId')
-  @Roles(UserRole.ADMIN, UserRole.COORDINATOR)
-  @ApiOperation({ summary: 'Update required skill count for a shift' })
-  async updateRequirement(
-    @Param('shiftId', ParseUUIDPipe) shiftId: string,
-    @Param('reqId', ParseUUIDPipe) reqId: string,
-    @Body() dto: UpdateShiftRequirementDto,
-  ) {
-    return this.shiftsService.updateRequirement(shiftId, reqId, dto);
   }
 
   @Delete('shifts/:shiftId/requirements/:reqId')

@@ -97,24 +97,30 @@ With infrastructure containers running (step 2 above):
 
 ## Demo Video
 
-https://github.com/user-attachments/assets/816e4c99-6270-4a49-b8d6-aa47f9168b7d
 
+https://github.com/user-attachments/assets/f46cb967-fd40-4d79-9c20-a5ae72eee650
 
 
 
 ## UI samples
 
-<img width="1912" height="906" alt="Loging page" src="https://github.com/user-attachments/assets/5940c822-9f46-4ab4-8efb-dff967da86e6" />
+<img width="1912" height="906" alt="Loging page" src="https://github.com/user-attachments/assets/df55d198-4341-40c3-8ad3-646441705495" />
 
-<img width="1916" height="907" alt="dashboard" src="https://github.com/user-attachments/assets/c0b192b3-fcc1-4de4-b8be-690881fe2060" />
+<img width="1916" height="942" alt="dashboard" src="https://github.com/user-attachments/assets/ff044394-b1e3-45ff-851e-58648b104526" />
 
-<img width="1890" height="910" alt="user list" src="https://github.com/user-attachments/assets/1f89310d-7945-43ff-9cf8-f71ea2ba1df2" />
+<img width="1915" height="940" alt="user list" src="https://github.com/user-attachments/assets/bccb6bdc-ae30-455d-b32d-767960561083" />
 
-<img width="1912" height="903" alt="worker list" src="https://github.com/user-attachments/assets/095e4fd3-766a-42e0-b021-bdae6e22db8f" />
+<img width="1912" height="942" alt="worker list" src="https://github.com/user-attachments/assets/0dcb9095-7ee3-4600-b33d-366e9a593d77" />
 
-<img width="1902" height="905" alt="shifts" src="https://github.com/user-attachments/assets/bb09fb7b-55b2-48a1-822a-a5b1b670db45" />
+<img width="1907" height="940" alt="Participants list" src="https://github.com/user-attachments/assets/bf02e63e-1f4c-4984-8fc2-a9d387089951" />
 
-<img width="1916" height="902" alt="shift details" src="https://github.com/user-attachments/assets/43f437f4-8dd4-4914-aaa1-4bfe74d17989" />
+<img width="1912" height="942" alt="shifts" src="https://github.com/user-attachments/assets/b7e79ac8-6a91-404b-8c83-5ee2d9351f33" />
+
+<img width="1913" height="941" alt="shift details" src="https://github.com/user-attachments/assets/b142f9fc-cfc5-4b3e-984d-dd4f7ef6ef4e" />
+
+
+
+
 
 
 
